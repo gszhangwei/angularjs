@@ -1,0 +1,37 @@
+body {
+        font-size: 20px;
+        width: 1600px;
+        margin: 0 auto;
+    }
+
+.searchText{
+	 	font-size: 16px;
+        line-height: 34px;
+        width: 70%;
+}
+
+.button{
+		line-height: 38px;
+        border: none;
+        background-color: #27a;
+        color: #fff;
+        width: 50px;
+        margin-left: -10px;
+        vertical-align: top;
+}
+
+.book{
+		border-top: 1px dashed #E8E8E8;
+        padding: 10px 0; 
+        position: relative;
+        min-height: 96px;
+}
+
+.book-img-part{
+		position: absolute;
+}
+
+.book-description-part{
+		margin-left: 90px;
+	    margin-top: -25px;
+}
