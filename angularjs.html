@@ -3,17 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>book</title>
-    <script type="text/javascript" src="angular.min.js"></script>
-    <script type="text/javascript" src="data.js"></script>
-    <script type="text/javascript" src="app.module.js"></script>
-    <script type="text/javascript" src="BookCatController.js"></script>
-    <script type="text/javascript" src="underscore.js"></script>
-    <link rel="stylesheet" type="text/css" href="angularjs.css">
+    <script type="text/javascript" src="javascripts/angular.min.js"></script>
+    <script type="text/javascript" src="javascripts/data.js"></script>
+    <script type="text/javascript" src="javascripts/app.module.js"></script>
+    <script type="text/javascript" src="javascripts/BookCatController.js"></script>
+    <script type="text/javascript" src="javascripts/SelectArea.js"></script>
+    <script type="text/javascript" src="javascripts/underscore.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/angularjs.css">
   </head>
   <body ng-controller="BookCatController">
   	<div class="searchArea">
-  		<input class="searchText" type="text"  placeholder="请输入查询信息" id="Text">
-  		<button class="button" ng-click="searchFun()">search</button>
+      <div ng-controller="SelectArea">
+          <select class="selected" ng-model="selectedTip" ng-options="obj.name for obj in selecttip"></select>
+          <select class="selected" ng-model="selectedGenre" ng-click="searchbookinlist(selectedTip,selectedGenre)">
+            <option ng-repeat="label in selecttip[selectedTip.id].interest">{{label}}</option>
+          </select>
+      </div>
+      <input class="searchText" type="text" ng-model="searchContent" placeholder="请输入查询信息" id="Text">
+  		<button class="button" ng-click="searchbook(searchContent)">search</button>
   	</div>
     <div class="book-list">
       <div class="book" ng-repeat="book in books">
@@ -24,7 +31,7 @@
             <h3 ng-click="toggle()">{{book.title}}</h3>
             <p class="authors"><span class="author" ng-repeat="author in book.author">{{author}}</span></p>
             <p class="price"><span>{{book.price}}</span>起</p>
-            <p class="tags"><span class=tag ng-repeat="tag in book.tags">{{tag.name}}&nbsp</span></p>
+            <p class="tags">标签:<span class=tag ng-repeat="tag in book.tags">{{tag.name}}&nbsp</span></p>
             <div class="summary" ng-if="visible">{{book.summary}}</div>
           </div>
       </div>
