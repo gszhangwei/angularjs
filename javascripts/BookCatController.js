@@ -22,7 +22,7 @@ app.controller('BookCatController',function($scope){
             return onebook;
         }
    	  });
-   	  if(bookbuf != "")
+   	  if(!_.isEmpty(bookbuf))
    	  	$scope.books = bookbuf; 
    }
 
