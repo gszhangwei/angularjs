@@ -1,5 +1,5 @@
 app.controller('BookCatController',function($scope){
-	// $scope.books=data.books;
+	$scope.books=data.books;
 	// $scope.selectedTip="出版社";
 	$scope.searchbookinlist=function(selectedTip,selectedGenre){
 		var bookbuf=_.filter(data.books, function(onebook){ 
@@ -22,7 +22,7 @@ app.controller('BookCatController',function($scope){
             return onebook;
         }
    	  });
-   	  if(bookbuf != "")
+   	  if(!_.isEmpty(bookbuf))
    	  	$scope.books = bookbuf; 
    }
 
